@@ -1,0 +1,56 @@
+.Result {
+
+    width: 900px;
+
+    &__table {
+        text-align: left;
+        border-collapse: separate;
+        border-spacing: 5px;
+        background-color: #ece9e0;
+        border: 16px solid #ece9e0;
+        border-radius: 20px;
+        margin-bottom: 30px;
+
+        &_correct {
+            background-color: #bbaa75;
+        }
+
+        th {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    &__reset {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &_btn {
+            padding: 10px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            background-color: bisque;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: rgb(153, 136, 116);
+            }
+        }
+    }
+}

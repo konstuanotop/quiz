@@ -1,0 +1,24 @@
+.QuizStart {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    &__btn {
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background-color: bisque;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: rgb(171, 152, 129);
+        }
+    }
+}
