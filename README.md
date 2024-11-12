@@ -8,3 +8,5 @@
 Использовался:
 - хук useState
 - условный рендер
+
+![quiz](https://github.com/user-attachments/assets/01349c02-7bbe-4e3d-a5ea-29752a495b6f)
