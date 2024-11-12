@@ -1,26 +1,20 @@
 import styles from './Game.module.scss'
 import questions from '../../questions.json'
-import { Dispatch, SetStateAction, useState } from 'react';
-import { Answers } from '../../types';
+import { useState } from 'react';
 
 interface GameProps {
     step: number;
-    setStep: Dispatch<SetStateAction<number>>;
-    answers: Answers[];
-    setAnswers: Dispatch<SetStateAction<Answers[]>>;
+    onStep: () => void;
+    onClickAnswerCorrect: (item: string, i: number) => void;
+    onClickAnswerUncorrect: (item: string) => void;
 }
 
-const Game: React.FC<GameProps> = ({ step, setStep, answers, setAnswers }) => {
+const Game: React.FC<GameProps> = ({ step, onStep, onClickAnswerCorrect, onClickAnswerUncorrect }) => {
 
     const [userAnswerIdx, setUserAnswerIdx] = useState<number | null>(null);
     const userAnswered = userAnswerIdx !== null;
     const resetUserAnswer = () => setUserAnswerIdx(null)
 
-    // Если выбранный индекс совпадает с корректным, то передаем объект с данными: 
-    // isCorrect: true, question: questions[step].title, userAnswer: item, correctAnswer: questions[step].options[i]
-
-    // Если выбранный индекс НЕ совпадает с корректным, то передаем объект с данными:
-    // isCorrect: false, question: questions[step].title, userAnswer: item, correctAnswer: questions[step].options[questions[step].correct]
 
     const handleClickAnswer = (item: string, i: number) => {
         if (userAnswerIdx !== null) {
@@ -30,18 +24,17 @@ const Game: React.FC<GameProps> = ({ step, setStep, answers, setAnswers }) => {
         }
 
         if (i === questions[step].correct) {
-            setAnswers((prev) => ([...prev, { isCorrect: true, question: questions[step].title, userAnswer: item, correctAnswer: questions[step].options[i] }]))
+            onClickAnswerCorrect(item, i)
 
         } else {
-            setAnswers((prev) => [...prev, { isCorrect: false, question: questions[step].title, userAnswer: item, correctAnswer: questions[step].options[questions[step].correct] }])
+            onClickAnswerUncorrect(item)
         }
-
 
     }
 
     const handleContinueClick = () => {
         resetUserAnswer()
-        setStep((step) => step + 1)
+        onStep()
     }
 
     return (
